@@ -1,14 +1,16 @@
 #include "anagram.h"
+#include<bits/stdc++.h>
 
 bool isLengthEqual(string word1 , string word2){
     if(word1.length() != word2.length()){
         cout << "Unequal Length" <<  endl ;
         return false ;
+    }
     else{
         return true ;
     }
 }
-    
+
 string removeSpaces(string word){
     string wordWithoutSpaces ;
 
@@ -21,15 +23,26 @@ string removeSpaces(string word){
 }
 
 
+string removeLowerCase_and_Sort(string word){
+    transform(word.begin(), word.end(), word.begin(), ::tolower);
+    sort(word.begin(), word.end()) ;
+    return word ;
 
-bool checkWords(string word1 , string word2){
+}
 
-    if(word1.length() != word2.length()){
-        cout << "Unequal Length" <<  endl ;
+
+
+bool Anagram::WordPairIsAnagram(const std::string& word1, const std::string& word2) {
+    
+    word1 = removeSpaces(word1) ;
+    word1 = removeLowerCase_and_Sort(word1);
+    word2 = removeSpaces(word2) ;
+    word2 = removeLowerCase_and_Sort(word2);
+
+    if(!isLengthEqual(word1 , word2)){
         return false ;
     }
     else{
-        cout << "Equal Length" <<  endl ;
         for(int i = 0 ; i < word1.length() ; i ++){
             if(word1[i] != word2[i]){
                 return false ;
@@ -37,17 +50,18 @@ bool checkWords(string word1 , string word2){
         }
         return true ;
     }
-}
-
-
-bool Anagram::WordPairIsAnagram(const std::string& word1, const std::string& word2) {
-    //Fill the correct implementation here
-    return false;
+    
 }
 
 std::vector<std::string> Anagram::SelectAnagrams(
         const std::string& word,
         const std::vector<std::string>& candidates) {
     //Fill the correct implementation here
-    return candidates;
+    
+    vector<string> selection;
+    for(int i = 0 ; i < candidates.size();i++){
+        if (WordPairIsAnagram(word, candidates[i]))
+            selection.push_back(candidates[i]);
+    }
+    return selection;
 }
