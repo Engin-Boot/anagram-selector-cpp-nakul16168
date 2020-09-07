@@ -1,5 +1,32 @@
 #include "anagram.h"
 
+bool isLengthEqual(string word1 , string word2){
+    if(word1.length() != word2.length()){
+        cout << "Unequal Length" <<  endl ;
+        return false ;
+    else{
+        return true ;
+    }
+}
+
+bool checkWords(string word1 , string word2){
+
+    if(word1.length() != word2.length()){
+        cout << "Unequal Length" <<  endl ;
+        return false ;
+    }
+    else{
+        cout << "Equal Length" <<  endl ;
+        for(int i = 0 ; i < word1.length() ; i ++){
+            if(word1[i] != word2[i]){
+                return false ;
+            }
+        }
+        return true ;
+    }
+}
+
+
 bool Anagram::WordPairIsAnagram(const std::string& word1, const std::string& word2) {
     //Fill the correct implementation here
     return false;
