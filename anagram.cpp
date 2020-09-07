@@ -1,7 +1,7 @@
 #include "anagram.h"
 #include<bits/stdc++.h>
 
-bool isLengthEqual(string word1 , string word2){
+bool isLengthEqual(string& word1 , string& word2){
     if(word1.length() != word2.length()){
         cout << "Unequal Length" <<  endl ;
         return false ;
@@ -11,8 +11,8 @@ bool isLengthEqual(string word1 , string word2){
     }
 }
 
-string removeSpaces(string word){
-    string wordWithoutSpaces ;
+string& removeSpaces(string& word){
+    string& wordWithoutSpaces ;
 
     for(int i = 0 ; i < word.length() ; i ++){
         if(word[i] != ' '){
@@ -23,7 +23,7 @@ string removeSpaces(string word){
 }
 
 
-string removeLowerCase_and_Sort(string word){
+string& removeLowerCase_and_Sort(string& word){
     transform(word.begin(), word.end(), word.begin(), ::tolower);
     sort(word.begin(), word.end()) ;
     return word ;
