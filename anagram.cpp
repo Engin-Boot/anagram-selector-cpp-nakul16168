@@ -8,6 +8,19 @@ bool isLengthEqual(string word1 , string word2){
         return true ;
     }
 }
+    
+string removeSpaces(string word){
+    string wordWithoutSpaces ;
+
+    for(int i = 0 ; i < word.length() ; i ++){
+        if(word[i] != ' '){
+            wordWithoutSpaces += word[i] ;
+        }
+    }
+    return wordWithoutSpaces ;
+}
+
+
 
 bool checkWords(string word1 , string word2){
 
